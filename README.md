@@ -1,9 +1,8 @@
 # scraperModule
----
----
+
 
 ## Project Document
----
+
   * Project name: scraperModule
   * Project version: 1.0
   * Author: Guo Zhang
@@ -14,7 +13,7 @@
 
 
 ## Project Structure
----
+
   * sampleScraper.py (main module, with parse function)
     * scraperRequest.py (request with requests)
       * scraperHeaders.py (user-agents and proxies)
@@ -32,6 +31,6 @@
     
 
 ## Project Version
----
+
   * Version 1.0 (2016-5-29):
     * First version
