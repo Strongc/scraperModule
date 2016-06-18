@@ -11,7 +11,7 @@ __author__ = 'Guo Zhang'
 
 __date__ = '2016-5-28'
 
-__moduleVersion__ = '1.1'
+__moduleVersion__ = '1.2'
 
 __doc__ = '''
 This is a multithreading scarper pool.
@@ -25,6 +25,8 @@ This is a multithreading scarper pool.
 import time
 import Queue
 from threading import Thread
+
+from decorator import printTime
 
 #----------module import----------
 
@@ -76,7 +78,8 @@ class ScraperWorker(Thread):
                 do(args)
                 self.workQueue.task_done()
             except Exception,e:
-                print(e)
+                if e == Queue.Empty:
+                    print(e)
                 break
         
 #----------class definition----------
@@ -84,6 +87,7 @@ class ScraperWorker(Thread):
         
 #----------function definition----------
 
+@printTime
 def threadPool(function,paraGroups,n=10):
     threadNum = len(paraGroups)
     if threadNum > n:
@@ -97,11 +101,10 @@ def threadPool(function,paraGroups,n=10):
 #----------main function----------
 
 if __name__ == '__main__':
-    start = time.time()
     function = print
     paragroups = range(1000)
     threadPool(function,paragroups)
-    end = time.time()
-    print('time:',end-start)
+
+
     
 #----------main function----------
