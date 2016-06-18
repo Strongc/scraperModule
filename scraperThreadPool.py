@@ -77,10 +77,12 @@ class ScraperWorker(Thread):
                 do,args = self.workQueue.get(block=False)
                 do(args)
                 self.workQueue.task_done()
-            except Exception,e:
-                if e == Queue.Empty:
-                    print(e)
+            except Queue.Empty:
                 break
+            except Exception,e:
+                print(e)
+                break
+
         
 #----------class definition----------
         
