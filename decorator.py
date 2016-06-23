@@ -15,7 +15,7 @@ __last_edit_date__ = '2016-6-18'
 
 __creation_date__ = '2016-6-18'
 
-__moduleVersion__ = '1.0'
+__moduleVersion__ = '1.1'
 
 __doc__ = '''
 This is a decorator module for China's Prices Project
@@ -38,10 +38,10 @@ import time
 def printTime(func):
     def _deco(*args,**kwargs):
         begin = time.time()
-        func(*args,**kwargs)
+        result = func(*args,**kwargs)
         end = time.time()
         print('time:',func.__name__,end-begin)
-        return func
+        return result
     return _deco
 
 
